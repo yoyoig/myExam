@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hand.dao.FilmDao">
+
+    <select id="queryAll" resultType="Film">
+        SELECT film_id,title,description, l.name language
+        FROM film f,LANGUAGE l
+        WHERE f.language_id = l.language_id;
+    </select>
+
+    <insert id="addFilm" parameterType="Film" >
+
+        INSERT INTO film(title,description,LANGUAGE_id)
+        VALUES(#{title},#{description},#{languageId})
+    </insert>
+
+    <update id="editFilm" parameterType="Film">
+        UPDATE film
+        SET
+          title=#{title},
+          description=#{description},
+          language_id=#{languageId}
+        WHERE film_id = #{filmId}
+    </update>
+
+    <delete id="deleFilm" parameterType="short">
+        DELETE FROM film WHERE film_id=#{filmId}
+    </delete>
+
+    <select id="getFilmById" parameterType="short" resultType="Film">
+       SELECT film_id,title,description, l.name language
+        FROM film f,LANGUAGE l
+        WHERE f.language_id = l.language_id AND f.film_id = #{filmId}
+    </select>
+
+    <select id="getFilmCount" resultType="int">
+        SELECT COUNT(*) from film
+    </select>
+
+    <select id="getPage" resultType="Film" parameterType="PageBean">
+        SELECT film_id,title,description, l.name language
+        FROM film f,LANGUAGE l
+        WHERE f.language_id = l.language_id
+        LIMIT #{startNum},#{pageSize}
+    </select>
+
+    <select id="getFilmByTitle" resultType="int" parameterType="String">
+        select COUNT(*) FROM film WHERE title=#{title}
+    </select>
+</mapper>

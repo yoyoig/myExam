@@ -1,0 +1,43 @@
+.left{
+    float: left;
+    background-color: rgba(255,255,255,0.5);
+    margin-left: 20px;
+    margin-top: 30px;
+    width: 200px;
+    height: 400px;
+    padding-top: 30px;
+
+
+}
+
+.left>ul{
+    margin-right: 20px;
+}
+
+.head{
+    margin-left: 20px;
+    margin-bottom: 7px;
+}
+
+.right{
+    margin-top: 0px;
+    margin-left: 220px;
+    padding-top:20px;
+	background-color: rgba(255,255,255,0.7);
+}
+
+ul>li{
+    list-style: none;
+    height: 30px;
+    width: 120px;
+    border-top: 1px solid black;
+    text-align: center;
+}
+
+body{
+    background-color: lightgray;
+}
+
+#info_update input{
+    background:none;
+}
